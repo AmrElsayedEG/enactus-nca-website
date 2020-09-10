@@ -1,0 +1,130 @@
+#event-modal {
+
+  .modal-container {
+    overflow-y: hidden;
+  }
+
+  #event-container {
+    width: 90%;
+    height: 100%;
+    margin: .5em auto;
+    display: grid;
+    place-items: center;
+
+    @include mobile{
+      overflow-y: scroll;
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      text-align: left;
+      margin-bottom: $mb;
+
+      .event-name {
+        color: $gold;
+        font-size: 1.6em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: $mb;
+      }
+
+      .event-desc {
+        color: $white;
+        font-size: .86em;
+        letter-spacing: .5px;
+      }
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      place-items: center;
+      grid-gap: 25px;
+      @include mobile{
+        margin-top: 25px;
+      }
+
+      .left {
+        .event-body {
+          color: $white;
+          font-size: .74em;
+          letter-spacing: .5px;
+          margin-bottom: $mb;
+        }
+
+        .event-ticket {
+          color: $gold;
+          font-size: .74em;
+          letter-spacing: 1px;
+          margin-bottom: $mb;
+        }
+
+        .event-contact {
+          font-size: .74em;
+          color: $white;
+          letter-spacing: 1px;
+
+          .first-num, .second-num, .third-num {
+            color: $gold;
+          }
+        }
+      }
+
+      .right {
+        .price {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          font-size: .86em;
+          color: $gold;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .conditional-payment {
+          font-size: .74em;
+          color: $gold;
+          text-transform: capitalize;
+          letter-spacing: .5px;
+          text-align: center;
+          margin-bottom: $mb;
+        }
+
+        .form-cta {
+          text-transform: uppercase;
+          padding: $button-pad-y $button-pad-x;
+          border: none;
+          border-radius: 7px;
+          outline: none;
+          background: $gold;
+          cursor: pointer;
+          margin-left: 38%;
+          transition: all .3s linear;
+
+          @include mobile {
+            margin-left: 29%;
+          }
+
+          &:hover{
+            background: $blue;
+            color: $gold;
+            border: 1px solid $gold;
+          }
+        }
+
+        .disabled{
+          background: $nav-blue;
+          opacity: .5;
+          cursor: default;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+}

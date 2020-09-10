@@ -1,0 +1,715 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=7" http-equiv="X-UA-Compatible">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <meta content="keywords" name="Enactus, Enactus-NCA, EnactusNCA">
+    <meta content="autor" name="Mohamed Ahmed Abdelaleem">
+    <meta content="description" name="A Website For Enactus New Cairo Academy Team">
+    <link href="{% static 'img/enactus-main-logo.png' %}" rel="icon">
+    <title>EnactusNCA || Homepage</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+</head>
+<body>
+
+
+<!-- NavBar Start -->
+<nav id="navbar">
+    <div class="container">
+        <a class="logo-container" href="#hero">
+            <img alt="Enacuts Logo" class="logo" src="{% static 'img/enactus-logo.png' %}">
+        </a>
+        <div class="menu" id="menu-icon">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</nav>
+<nav id="collapse-navbar">
+    <div class="container">
+        <ul class="navlink">
+            <li><a class="navitem" href="#hero">Home</a></li>
+            <li><a class="navitem" href="#about">About</a></li>
+            <li><a class="navitem" href="#board">Our Board</a></li>
+            <li><a class="navitem" href="#event">Events</a></li>
+            <li><a class="navitem" href="#timeline">Timeline</a></li>
+            <li><a class="navitem" href="#contact">Contact us</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- NavBar End -->
+
+<!-- Hero main Start -->
+<main id="hero" style="background: radial-gradient(circle,rgba(0,0,0,.8) 40%,rgba(0,26,48,.8) 100%),url({% static 'img/hero-photo.jpg' %}) no-repeat;">
+    <div class="container">
+        <div class="content">
+            <h2 class="hero-header">You`re Talented Somehow !</h2>
+            <p class="hero-desc">
+                Talent is a special gift that someone naturally was born with
+                it's the thing that can make you different from anyone on your own
+                way.
+            </p>
+            <div class="cta">
+                <a class="modal-trigger join disabled" data-trigger="join-modal" href="#join-modal">Join US</a>
+                {% if qr.active %}
+                <a class="modal-trigger app" data-trigger="app-modal" href="#app-modal">Download Our App</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Hero main End -->
+
+<!-- About Section Start -->
+<section id="about">
+    <div class="container">
+        <div class="card">
+            <h2 class="about-header"><span class="special">en</span>trepreneuri</h2>
+            <p class="about-desc">
+                Having the perspective to see an opportunity and talent to create value from that
+                opportunity
+            </p>
+        </div>
+        <div class="card">
+            <h2 class="about-header"><span class="special">act</span>ion</h2>
+            <p class="about-desc">
+                The willingness to do something and the commitment to see it through even when the outcome is not
+                guaranteed
+            </p>
+        </div>
+        <div class="card">
+            <h2 class="about-header"><span class="special">us</span></h2>
+            <p class="about-desc">
+                a collection of people who see themselves connected in some important way, individuals that are part of
+                a greater whole
+            </p>
+        </div>
+    </div>
+</section>
+<!-- About Section end -->
+
+<!-- Board Section Start -->
+<section id="board">
+    <div class="container">
+        <div class="board-card">
+            <a class="modal-trigger" data-trigger="our-board-past" href="#our-board-past">
+                <img alt="board president" class=" board-img" src="{{past_season_president.img.url}}">
+            </a>
+            <h3 class="card-name">{{past_season_president.first_name}} {{past_season_president.last_name}}</h3>
+            <p class="card-title">President</p>
+            <p class="card-season">Season {{past_season_president.season}}</p>
+        </div>
+        <div class="board-card">
+            <a class="modal-trigger" data-trigger="our-board" href="#our-board">
+                <img alt="board president" class=" board-img" src="{{this_season_president.img.url}}">
+            </a>
+            <h3 class="card-name">{{this_season_president.first_name}} {{this_season_president.last_name}}</h3>
+            <p class="card-title">President</p>
+            <p class="card-season">Season {{this_season_president.season}}</p>
+        </div>
+    </div>
+</section>
+<!-- Board Section Start -->
+
+<!-- Events Section Start -->
+<section id="event">
+    <div class="container">
+        <div class="active-events">
+            <div class="content">
+                <h2 class="event-header">
+                    Active Events
+                </h2>
+                <p class="event-desc">
+                    Join now and have fun with our interesting events
+                </p>
+            </div>
+            <div class="wrapper">
+                {% if active_events %}
+                {% for active_events in active_events %}
+                <div class="event-card"
+                     style="background: linear-gradient(to bottom, rgba(0,0,0,.8)40%,rgba(0,26,48,.8)60%),
+                     url('{% static 'img/event-bg.jpg' %}') no-repeat; background-size: cover; background-position: center center;">
+                    <h3 class="event-name">
+                        {{active_events.title}}
+                    </h3>
+                    <a class="modal-trigger event-cta" data-trigger="event-modal-{{active_events.id}}" href="#event-modal-{{active_events.id}}">more info</a>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="event-card"
+                     style="background: linear-gradient(to bottom, rgba(0,0,0,.8)40%,rgba(0,26,48,.8)60%),
+                     url('{% static 'img/event-bg.jpg' %}') no-repeat; background-size: cover; background-position: center center;">
+                    <h3 class="event-name">
+                        No Active Events Available
+                    </h3>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="unactivated-events">
+            <div class="content">
+                <h2 class="event-header">
+                    Previous Events
+                </h2>
+                <p class="event-desc">
+                    Our Previous Events This season
+                </p>
+            </div>
+            <div class="wrapper">
+                {% for past_events in past_events %}
+                <div class="event-card"
+                     style="background: linear-gradient(to bottom, rgba(0,0,0,.8)40%,rgba(0,26,48,.8)60%),
+                     url('{% static 'img/event-bg.jpg' %}') no-repeat; background-size: cover; background-position: center center;">
+                    <h3 class="event-name">
+                        Cyclicious
+                    </h3>
+                    <a class="modal-trigger event-cta" data-trigger="prev-event-modal-{{past_events.id}}" href="#prev-event-modal-{{past_events.id}}">more info</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Events Section End -->
+
+<!-- TimeLine Section Start -->
+<section id="timeline">
+
+    <div class="tl-item">
+        <div class="tl-bg"
+             style="background-image:
+              url('{% static 'img/pexels-raphael-brasileiro-2710382.jpg' %}')">
+
+        </div>
+        <div class="tl-year">
+            <p class="f2 heading">
+                20{{sum.0.season}}
+            </p>
+        </div>
+        <div class="tl-content">
+            <h1>{{sum.0.title}}</h1>
+            <p>{{sum.0.text}}</p>
+            <a class="modal-trigger info" data-trigger="our-board" href="#our-board">
+                more info
+            </a>
+        </div>
+    </div>
+    <div class="tl-item">
+        <div class="tl-bg"
+             style="background-image:
+              url('{% static 'img/pexels-nick-wehrli-3375116.jpg' %}')">
+
+        </div>
+        <div class="tl-year">
+            <p class="f2 heading">
+                20{{sum.1.season}}
+            </p>
+        </div>
+        <div class="tl-content">
+            <h1>{{sum.1.title}}</h1>
+            <p>{{sum.1.text}}</p>
+            <a class="modal-trigger info" data-trigger="our-board" href="#our-board">
+                more info
+            </a>
+        </div>
+    </div>
+    <div class="tl-item">
+        <div class="tl-bg"
+             style="background-image:
+              url('{% static 'img/pexels-padli-pradana-2943933.jpg' %}')">
+
+        </div>
+        <div class="tl-year">
+            <p class="f2 heading">
+                20{{sum.2.season}}
+            </p>
+        </div>
+        <div class="tl-content">
+            <h1>{{sum.2.title}}</h1>
+            <p>{{sum.2.text}}</p>
+            <a class="modal-trigger info" data-trigger="our-board" href="#our-board">
+                more info
+            </a>
+        </div>
+    </div>
+    <div class="tl-item">
+        <div class="tl-bg"
+             style="background-image:
+              url({% static 'img/pexels-jara-3083250.jpg' %})">
+
+        </div>
+        <div class="tl-year">
+            <p class="f2 heading">
+                20{{sum.3.season}}
+            </p>
+        </div>
+        <div class="tl-content">
+            <h1>{{sum.3.title}}</h1>
+            <p>{{sum.3.text}}</p>
+            <a class="modal-trigger info" data-trigger="our-board" href="#our-board">
+                more info
+            </a>
+        </div>
+    </div>
+</section>
+<!-- TimeLine Section End -->
+
+<!-- Footer Start -->
+<footer id="footer">
+    <div class="container">
+        <div class="l-footer">
+            <h2 class="logo-container"><img alt="" class="logo" src="{% static 'img/enactus-logo.png' %}"></h2>
+            <p class="web-desc">
+                Enactus is an international nonprofit organization dedicated to inspiring students to improve the world through entrepreneurial action
+            </p>
+        </div>
+        <div class="mid-footer">
+            <h2 class="sponsors">Our Sponsors</h2>
+            <div class="wrapper">
+                {% for sponser in sponser %}
+                <img alt="" height="70" src="{{sponser.img.url}}" width="70">
+                {% endfor %}
+            </div>
+        </div>
+        <div class="r-footer">
+            <h2 class="social">Social</h2>
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/EnactusNCA/">
+                        <?xml version='1.0' encoding='utf-8'?>
+                        <!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) -->
+                        <svg id='Layer_1' style='enable-background:new 0 0 512 512;' version='1.1' viewBox='0 0 512 512'
+                             width="35" x='0px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg'
+                             xmlns:xlink='http://www.w3.org/1999/xlink' y='0px'><path d='M480,257.35c0-123.7-100.3-224-224-224s-224,100.3-224,224 c0,111.8,81.9,204.47,189,221.29V322.12h-56.89v-64.77H221v-49.36c0-56.13,33.45-87.16,84.61-87.16c24.51,0,50.15,4.38,50.15,4.38 v55.13h-28.26c-27.81,0-36.51,17.26-36.51,35v42.02h62.12l-9.92,64.77h-52.2v156.53C398.1,461.85,480,369.18,480,257.35L480,257.35z ' style='fill-rule:evenodd;clip-rule:evenodd;fill:#ffc21c;'/></svg>
+                    </a>
+                    <a href="instagram.com/enactusnca/">
+                        <svg fill="#ffc21c" viewBox='0 0 512 512' width='35' xmlns='http://www.w3.org/2000/svg'><title>
+                            ionicons-v5_logos</title>
+                            <path d='M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z'/>
+                            <path d='M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z'/>
+                            <path d='M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z'/>
+                        </svg>
+                    </a>
+                    <a href="https://www.behance.net/">
+                        <?xml version='1.0' encoding='utf-8'?>
+                        <!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) -->
+                        <svg id='Layer_1' style='enable-background:new 0 0 512 512;' version='1.1' viewBox='0 0 512 512'
+                             width="35" x='0px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg'
+                             xmlns:xlink='http://www.w3.org/1999/xlink' y='0px'><g><path d='M344.09,233.55c-28.87,0-32.88,28.82-32.88,28.82h61.39C372.59,262.37,372.99,233.55,344.09,233.55z ' style='fill:#ffc21c;'/><path
+                                d='M204.82,262.37H150.4v49.96h48.18c0.82,0,2.05,0.02,3.48,0c7.75-0.18,22.44-2.44,22.44-24.29 C224.51,262.1,204.82,262.37,204.82,262.37z'
+                                style='fill:#ffc21c;'/><path
+                                d='M256.01,32C132.29,32,32,132.27,32,255.99S132.29,480,256.01,480C379.71,480,480,379.71,480,255.99 C480,132.28,379.7,32,256.01,32z M303.16,169.63h77.11v23.01h-77.11V169.63z M264.18,290.37c0,57.05-59.36,55.16-59.36,55.16H150.4 h-1.59h-41.25v-186.9h41.25h1.59h54.42c29.55,0,52.87,16.32,52.87,49.76s-28.52,35.57-28.52,35.57 C266.77,243.96,264.18,290.37,264.18,290.37z M408.44,287.31h-96.85c0,34.71,32.89,32.53,32.89,32.53 c31.06,0,29.97-20.11,29.97-20.11h32.9c0,53.37-63.98,49.71-63.98,49.71c-76.74,0-71.8-71.46-71.8-71.46s-0.07-71.8,71.8-71.8 C419.02,206.19,408.44,287.31,408.44,287.31z'
+                                style='fill:#ffc21c;'/><path
+                                d='M218.04,211.29c0-19.44-13.22-19.44-13.22-19.44h-7H150.4v41.7h51.04 C210.25,233.55,218.04,230.72,218.04,211.29z'
+                                style='fill:#ffc21c;'/></g></svg>
+
+                    </a>
+                </li>
+                <li>
+                    <svg viewBox='0 0 512 512' width='35' xmlns='http://www.w3.org/2000/svg'><title>
+                        ionicons-v5-g</title>
+                        <path d='M451,374c-15.88-16-54.34-39.35-73-48.76C353.7,313,351.7,312,332.6,326.19c-12.74,9.47-21.21,17.93-36.12,14.75s-47.31-21.11-75.68-49.39-47.34-61.62-50.53-76.48,5.41-23.23,14.79-36c13.22-18,12.22-21,.92-45.3-8.81-18.9-32.84-57-48.9-72.8C119.9,44,119.9,47,108.83,51.6A160.15,160.15,0,0,0,83,65.37C67,76,58.12,84.83,51.91,98.1s-9,44.38,23.07,102.64,54.57,88.05,101.14,134.49S258.5,406.64,310.85,436c64.76,36.27,89.6,29.2,102.91,23s22.18-15,32.83-31a159.09,159.09,0,0,0,13.8-25.8C465,391.17,468,391.17,451,374Z'
+                              style='fill:none;stroke:#ffc21c;stroke-miterlimit:10;stroke-width:32px'/>
+                    </svg>
+                    <p>
+                        +20 000 000 000 00
+                    </p>
+                </li>
+                <li>
+                    <svg viewBox='0 0 512 512' width='35' xmlns='http://www.w3.org/2000/svg'><title>
+                        ionicons-v5-o</title>
+                        <rect height='320' rx='40' ry='40'
+                              style='fill:none;stroke:#ffc21c;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'
+                              width='416' x='48'
+                              y='96'/>
+                        <polyline points='112 160 256 272 400 160'
+                                  style='fill:none;stroke:#ffc21c;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                    </svg>
+                    <p>mail@enactus-nca.org</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="b-footer">
+        <p>All Rights Reserved by &copy; Enactus 2020</p>
+    </div>
+</footer>
+<!-- Footer End -->
+
+
+<!-- Modals Start -->
+<!-- Join Modal start -->
+<div class="modal" id="join-modal">
+    <div class="modal-container">
+        <div class="content">
+            <h2 class="join-header">Recruitment</h2>
+            <p class="join-desc">Join our family and become a better version of your self.</p>
+        </div>
+        <form method="post" id="join-form">
+            {% csrf_token %}
+            <div class="input-field">
+            <label for="id_first_name">First name:</label>
+            <input type="text" name="first_name" maxlength="20" required="" id="id_first_name">
+        </div>
+            <div class="input-field">
+<label for="id_last_name">Last name:</label>
+                <input type="text" name="last_name" maxlength="20" required="" id="id_last_name">
+            </div>
+            <div class="input-field">
+<label for="id_phone">Phone:</label><input type="text" name="phone" maxlength="20" required="" id="id_phone">
+            </div>
+            <div class="input-field">
+<label for="id_email">Email:</label><input type="email" name="email" required="" id="id_email">
+            </div>
+            <div class="input-field">
+                <label for="id_college">College:</label><select name="college" class="browser-default" id="id_college">
+  <option value="Computer Science">Computer Science</option>
+
+  <option value="Engineering">Engineering</option>
+
+  <option value="Information Systems">Information Systems</option>
+
+  <option value="Applied Arts">Applied Arts</option>
+
+  <option value="Commerce and Business Administration">Commerce and Business Administration</option>
+
+</select>
+            </div>
+            <div class="input-field">
+<label for="id_year_of_study">Year of study:</label><input type="number" name="year_of_study" required="" id="id_year_of_study">
+            </div>
+            <div class="input-field">
+                <label for="id_first_prefrence">First prefrence:</label><select name="first_prefrence" class="browser-default" id="id_first_prefrence">
+  <option value="multimedia">multimedia</option>
+
+  <option value="hr">hr</option>
+
+  <option value="er">er</option>
+
+  <option value="presentation">presentation</option>
+
+  <option value="project">project</option>
+
+</select>
+            </div>
+            <div class="input-field">
+<label for="id_second_prefrence">Second prefrence:</label><select name="second_prefrence" class="browser-default" id="id_second_prefrence">
+  <option value="multimedia">multimedia</option>
+
+  <option value="hr">hr</option>
+
+  <option value="er">er</option>
+
+  <option value="presentation">presentation</option>
+
+  <option value="project">project</option>
+
+</select>
+            </div>
+            <button type="submit" class="btn btn-small waves-effect" name="r_form_sub">Submit</button>
+
+          </form>
+    </div>
+</div>
+<!-- Join Modal End -->
+<!-- app Modal start -->
+<div class="modal" id="app-modal">
+    <div class="modal-container">
+        <div class="content">
+            <h2 class="app-header">Download Our App</h2>
+            <p class="app-desc">
+                Download our app from google play & app store.
+            </p>
+        </div>
+            <img src="{{qr.qr_img.url}}" style="width:300px;height:300px"/>
+
+    </div>
+</div>
+<!-- app Modal End -->
+
+<!-- Our Board Modal Start -->
+<!-- first -->
+<section class="modal" id="our-board">
+    <div class="modal-container">
+        <div class="row-header">
+            <div class="col">
+                <div class="content">
+                    <h2 class="board-header">Season {{this_season_president.season}}</h2>
+                    <p class="board-desc">Our Board For this Season</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-1">
+            <div class="col-12">
+                <div class="card">
+                    <img alt="" class="card-img-president" src="{{this_season_president.img.url}}">
+                    <h3 class="card-name">{{this_season_president.first_name}} {{this_season_president.last_name}}</h3>
+                    <p class="card-title">President</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="col-6">
+                <div class="card"><img alt="" class="card-img-vice" src="{{this_season_vice_1.img.url}}">
+                    <h3 class="card-name-vice">{{this_season_vice_1.first_name}}<br />{{this_season_vice_1.last_name}}</h3>
+                    <p class="card-title-vice">Vice President</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card"><img alt="" class="card-img-vice" src="{{this_season_vice_2.img.url}}">
+                    <h3 class="card-name-vice">{{this_season_vice_2.first_name}}<br />{{this_season_vice_2.last_name}}</h3>
+                    <p class="card-title-vice">Vice President</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-5">
+            <div class="col-1">
+                <div class="card"><img alt="" class="card-img-media" src="{{this_season_multimedia.img.url}}">
+                    <h3 class="card-name-media">{{this_season_multimedia.first_name}}<br />{{this_season_multimedia.last_name}}</h3>
+                    <p class="card-title-media">Multimedia Director</p>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="card"><img alt="" class="card-img-media" src="{{this_season_er.img.url}}">
+                    <h3 class="card-name-media">{{this_season_er.first_name}}<br />{{this_season_er.last_name}}</h3>
+                    <p class="card-title-media">ER Director</p>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="card"><img alt="" class="card-img-media" src="{{this_season_hr.img.url}}">
+                    <h3 class="card-name-media">{{this_season_hr.first_name}}<br />{{this_season_hr.last_name}}</h3>
+                    <p class="card-title-media">HR Director</p>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="card"><img alt="" class="card-img-media" src="{{this_season_project.img.url}}">
+                    <h3 class="card-name-media">{{this_season_project.first_name}}<br />{{this_season_project.last_name}}</h3>
+                    <p class="card-title-media">Project Director</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-1">
+            <div class="col-12">
+                <div class="card"><img alt="" class="card-img-media" src="{{this_season_project.img.url}}">
+                    <h3 class="card-name">{{this_season_presentation.first_name}}<br />{{this_season_presentation.last_name}}</h3>
+                    <p class="card-title">this_season_presentation Director</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Second -->
+
+<section class="modal" id="our-board-past">
+    <div class="modal-container">
+        <div class="row-header">
+            <div class="col">
+                <div class="content">
+                    <h2 class="board-header">Season {{past_season_president.season}}</h2>
+                    <p class="board-desc">Our Board For this Season</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-1">
+            <div class="col-12">
+                <div class="card">
+                    <img alt="" class="card-img-president" src="{{past_season_president.img.url}}">
+                    <h3 class="card-name">{{past_season_president.first_name}} {{past_season_president.last_name}}</h3>
+                    <p class="card-title">President</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-2">
+            <div class="col-6">
+                <div class="card"><img alt="" class="card-img-vice" src="{{past_season_vice_1.img.url}}">
+                    <h3 class="card-name-vice">{{past_season_vice_1.first_name}}<br />{{past_season_vice_1.last_name}}</h3>
+                    <p class="card-title-vice">Vice President</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card"><img alt="" class="card-img-vice" src="{{past_season_vice_2.img.url}}">
+                    <h3 class="card-name-vice">{{past_season_vice_2.first_name}}<br />{{past_season_vice_2.last_name}}</h3>
+                    <p class="card-title-vice">Vice President</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-5">
+            <div class="col-1">
+                <div class="card"><img alt="" class="card-img-media" src="{{past_season_multimedia.img.url}}">
+                    <h3 class="card-name-media">{{past_season_multimedia.first_name}}<br />{{past_season_multimedia.last_name}}</h3>
+                    <p class="card-title-media">Multimedia Director</p>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="card"><img alt="" class="card-img-media" src="{{past_season_er.img.url}}">
+                    <h3 class="card-name-media">{{past_season_er.first_name}}<br />{{past_season_er.last_name}}</h3>
+                    <p class="card-title-media">ER Director</p>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="card"><img alt="" class="card-img-media" src="{{past_season_hr.img.url}}">
+                    <h3 class="card-name-media">{{past_season_hr.first_name}}<br />{{past_season_hr.last_name}}</h3>
+                    <p class="card-title-media">HR Director</p>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="card"><img alt="" class="card-img-media" src="{{past_season_project.img.url}}">
+                    <h3 class="card-name-media">{{past_season_project.first_name}}<br />{{past_season_project.last_name}}</h3>
+                    <p class="card-title-media">Project Director</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-1">
+            <div class="col-12">
+                <div class="card"><img alt="" class="card-img-media" src="{{past_season_presentation.img.url}}">
+                    <h3 class="card-name">{{past_season_presentation.first_name}}<br />{{past_season_presentation.last_name}}</h3>
+                    <p class="card-title">this_season_presentation Director</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Board Modal Start -->
+
+<!-- Event Modal Start -->
+{% for active_events in active_events %}
+<section class="modal event-modal" id="event-modal-{{active_events.id}}">
+    <div class="modal-container"
+         style="background: linear-gradient(to bottom, rgba(0,0,0,.8)40%,rgba(0,26,48,.8)60%),
+                     url('{% static 'img/event-bg.jpg' %}') no-repeat; background-size: cover; background-position: center center;">
+        <div id="event-container">
+            <div class="content">
+                <h3 class="event-name">{{active_events.title}}</h3>
+                <p class="event-desc">
+                    {{active_events.text_1}}
+                </p>
+            </div>
+            <div class="wrapper">
+                <div class="left">
+                    <p class="event-body">
+                        {{active_events.text_2}}
+                    </p>
+                    <p class="event-ticket">
+                        {{active_events.text_3}}
+                    </p>
+                    <p class="event-contact">
+                        {{active_events.text_4}}
+                    </p>
+                </div>
+                <div class="right">
+                    <p class="price">
+                        Ticket Price
+                        <span class="payment">{{active_events.price}} L.E</span>
+                    </p>
+                    <p class="conditional-payment">
+                        {{active_events.extra_price}}
+                    </p>
+                    <button class="modal-trigger form-cta" data-trigger="event-form">Book Now</button>
+                    <!-- class disabled for button disabled -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+<!-- prev modal -->
+
+{% for past_events in past_events %}
+<section class="modal prev-event-modal" id="prev-event-modal-{{past_events.id}}">
+    <div class="modal-container"
+         style="background: linear-gradient(to bottom, rgba(0,0,0,.8)40%,rgba(0,26,48,.8)60%),
+                     url('{% static 'img/event-bg.jpg' %}') no-repeat; background-size: cover; background-position: center center;">
+        <div id="event-container">
+            <div class="content">
+                <h3 class="event-name">{{past_events.title}}</h3>
+                <p class="event-desc">
+                   {{past_events.text_1}}
+                </p>
+            </div>
+            <div class="wrapper">
+                <div class="left">
+                    <p class="event-body">
+                         {{past_events.text_2}}
+                    </p>
+                    <p class="event-ticket">
+                        {{past_events.text_3}}
+                    </p>
+                    <p class="event-contact">
+                         {{past_events.text_4}}
+                    </p>
+                </div>
+                <div class="right">
+                    <p class="price">
+                        Ticket Price
+                        <span class="payment"> {{past_events.price}} L.E</span>
+                    </p>
+                    <p class="conditional-payment">
+                         {{past_events.extra_price}}
+                    </p>
+                    <!-- class disabled for button disabled -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+
+
+<!-- Form Event -->
+<section class="modal" id="event-form">
+    <div class="modal-container">
+        <div class="content">
+            <h2 class="form-header">Join Application</h2>
+            <p class="form-desc">
+                Fill The Form So You Could Join Us In A new Adventure
+            </p>
+            <form method="post" id="form-container"">
+            {% csrf_token %}
+            <div class="input-field">
+            <label for="id_event">Event:</label>{{form.event}}
+            </div>
+       <div class="input-field">
+<label for="id_first_name">First name:</label><input type="text" name="first_name" value="dsa" maxlength="20" required="" id="id_first_name">
+       </div>
+            <div class="input-field">
+           <label for="id_last_name">Last name:</label><input type="text" name="last_name" value="dsa" maxlength="20" required="" id="id_last_name">
+            </div>
+            <div class="input-field">
+                <label for="id_phone">Phone:</label><input type="text" name="phone" value="321" maxlength="20" required="" id="id_phone">
+            </div>
+            <div class="input-field">
+                <label for="id_age">Age:</label><input type="number" name="age" value="2" required="" id="id_age">
+            </div>
+
+            <button type="submit" class="btn btn-small waves-effect">Submit</button>
+
+
+
+        </form>
+        </div>
+    </div>
+</section>
+<!-- Event Modal End -->
+
+<!-- Modals End -->
+
+{% if pop_msg %}
+    <script type="text/javascript">
+        function codeAddress() {
+            Swal.fire('Good job!','Submission successful, Thank You','success');
+        }
+        window.onload = codeAddress
+        </script>
+
+{% endif %}
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+</html>

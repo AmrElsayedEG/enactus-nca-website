@@ -1,0 +1,22 @@
+/**
+  Font Regular Format
+*/
+$Font_name_Regular: "Raleway-Regular";
+$font_Regular_path: "../font/Raleway-Regular.ttf";
+$font_Regular_Format: "ttf";
+/**
+  Font Thin Format
+*/
+$Font_name_Thin: "Raleway-Thin";
+$font_Thin_path: "../font/Raleway-Thin.ttf";
+$font_Thin_Format: "ttf";
+
+@font-face {
+  font-family: $Font_name_Regular;
+  src: url($font_Regular_path) format($font_Regular_Format);
+}
+
+@font-face {
+  font-family: $Font_name_Thin;
+  src: url($font_Thin_path) format($font_Thin_Format);
+}

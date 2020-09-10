@@ -1,0 +1,45 @@
+@import "modals/join-modal";
+@import "modals/app.modal";
+@import "modals/board-modal";
+@import "modals/event-modal";
+@import "modals/event-form-modal";
+@import "modals/event-form-modal";
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, .8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .3s ease-in-out;
+
+  .modal-container {
+    width: 80%;
+    height: 90%;
+    border-radius: 15px;
+    background: $nav-blue;
+    display: grid;
+    place-items: center;
+
+    .content {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 65px;
+
+      @include tablet {
+        width: 80%;
+      }
+    }
+  }
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

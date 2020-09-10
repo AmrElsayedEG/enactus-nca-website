@@ -1,0 +1,122 @@
+#our-board {
+
+  .modal-container {
+    grid-template-rows: repeat(4, 2fr);
+  }
+
+  .row-1, .row-2, .row-5 {
+    display: grid;
+    place-items: center;
+    margin-bottom: 200px;
+    padding: 50px;
+  }
+
+  .row-2{
+    @include  mobile{
+      margin-bottom: 390px;
+    }
+  }
+
+  .row-5{
+    @include mobile{
+      margin-bottom: 330px;
+    }
+  }
+
+  .row-header {
+    padding: 50px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+
+    .content {
+      text-align: center;
+
+      @include tablet{
+        margin: 40px;
+      }
+      .board-header {
+        text-transform: uppercase;
+        color: $gold;
+      }
+
+      .board-desc {
+        text-transform: capitalize;
+        color: $white;
+      }
+    }
+  }
+
+  .row-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .row-2 {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .row-5 {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+
+
+    .card-img-president {
+      width: 150px;
+      height: 150px;
+      border: 2px solid $gold;
+      border-radius: 50%;
+    }
+
+    .card-img-vice {
+      width: 100px;
+      height: 100px;
+      border: 2px solid $gold;
+      border-radius: 50%;
+    }
+
+    .card-img-media {
+      width: 90px;
+      height: 90px;
+      border: 2px solid $gold;
+      border-radius: 50%;
+    }
+
+    .card-name, .card-name-media, .card-name-vice {
+      color: $gold;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    .card-name-media {
+      font-size: .76em;
+    }
+
+    .card-name-vice {
+      font-size: .87em;
+    }
+
+    .card-title, .card-title-media, .card-title-vice {
+      color: $white;
+      font-size: .89em;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+#about{
+  width: 100vw;
+  height: 60vh;
+
+  @include mobile{
+    height: 100vh;
+  }
+  
+  .container{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .card{
+    text-align: center;
+    margin-left: 5px;
+
+    .about-header{
+      text-transform: uppercase;
+      color: $white;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+      margin-bottom: $mb;
+
+      .special{
+        color: $gold;
+        font-size: 2.5em;
+      }
+    }
+    .about-desc{
+      color: white;
+      font-size: .69em;
+      text-transform: capitalize;
+    }
+  }
+}

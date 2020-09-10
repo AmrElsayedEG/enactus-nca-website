@@ -1,0 +1,51 @@
+#board {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, rgba(0, 0, 0, .8) 60%, rgba(0, 26, 48, .8) 100%), url("../asset/img/board-bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+
+  .container {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .board-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .board-img {
+      border: 3px solid $gold;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+
+    .card-name{
+      text-transform: uppercase;
+      color: $gold;
+      letter-spacing: 2px;
+      font-size: 1.2em;
+      margin-bottom: $mb;
+    }
+
+    .card-title{
+      color: $white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: .92em;
+      margin-bottom: $mb;
+    }
+
+    .card-season{
+      text-transform: uppercase;
+      color: $gold;
+      font-size: .59em;
+      margin-bottom: $mb;
+    }
+  }
+}

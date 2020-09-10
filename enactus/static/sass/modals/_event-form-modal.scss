@@ -1,0 +1,116 @@
+#event-form {
+  .modal-container {
+
+    @include mobile {
+      overflow-y: scroll;
+    }
+  }
+
+  .content {
+
+    .form-header {
+      text-transform: uppercase;
+      color: $gold;
+      letter-spacing: 1px;
+      margin-bottom: $mb;
+    }
+
+    .form-desc {
+      color: $white;
+      text-transform: capitalize;
+
+      @include mobile {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  #form-container {
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+
+      .form-submit {
+        text-transform: uppercase;
+        padding: 15px 30px;
+        background: $gold;
+        border: 1px solid $blue;
+        outline: none;
+        color: $blue;
+        border-radius: 7px;
+        cursor: pointer;
+        transition: all .3s linear;
+
+        &:hover{
+          background: $blue;
+          color: $gold;
+          border-color: $gold;
+        }
+      }
+
+  }
+
+  .input-field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 30px;
+    margin-bottom: $mb;
+    text-align: left;
+
+    label {
+      color: $gold;
+      text-transform: uppercase;
+      text-align: left;
+      width: 100%;
+    }
+
+    input {
+      border: none;
+      outline: none;
+      border-bottom: 2px solid $gold;
+      background: transparent;
+      padding: 10px 5px;
+      width: 100%;
+      color: $white;
+      font-size: .78em;
+      transition: all .3s ease-in;
+
+      &:focus {
+        border-bottom: 3px solid darken($gold, 7);
+      }
+    }
+
+    select {
+      width: 80%;
+      background: transparent;
+      color: $white;
+      border: 1px solid $gold;
+      outline: none;
+      padding: 10px 5px;
+      text-transform: uppercase;
+      transition: all .3s ease-in;
+
+      &:focus {
+        border: 2px solid darken($gold, 7);
+      }
+
+      option {
+        background: $nav-blue;
+        width: 100%;
+
+        &:focus {
+          background: $gold;
+        }
+      }
+
+      .disabled {
+        color: gray;
+      }
+    }
+  }
+}
