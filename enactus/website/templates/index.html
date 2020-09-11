@@ -715,5 +715,13 @@
 
 <script src="{% static 'js/main.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+{% for active_events in active_events %}
+const EventModalPast_{{active_events.id}} = document.getElementById("event-modal-{{active_events.id}}");EventModalPast_{{active_events.id}}.addEventListener("click",function(e){if(e.target.classList.contains("modal")){EventModalPast_{{active_events.id}}.classList.remove("open")}});
+{% endfor %}
+{% for past_events in past_events %}
+const EventModalPrev_{{past_events.id}} = document.getElementById("prev-event-modal-{{past_events.id}}");EventModalPrev_{{past_events.id}}.addEventListener("click",function(e){if(e.target.classList.contains("modal")){EventModalPrev_{{past_events.id}}.classList.remove("open")}});
+{% endfor %}
+</script>
 </body>
 </html>
