@@ -105,3 +105,20 @@ def home(request):
 
     }
     return render(request,'index.html',context)
+
+def summary_page(request,id):
+    sponser = sponsers.objects.all()
+    try:
+        sum = summary.objects.get(id=id)
+        board = all_seasons_board.objects.get(summary_plan=id)
+        context = {
+            'sum':sum,
+            'board':board,
+            'sponser':sponser,
+        }
+        return render(request,'season.html',context)
+    except:
+        context = {
+            'sponser': sponser,
+        }
+        return render(request,'not-available.html',context)

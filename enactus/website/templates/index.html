@@ -37,7 +37,7 @@
             <li><a class="navitem" href="#board">Our Board</a></li>
             <li><a class="navitem" href="#event">Events</a></li>
             <li><a class="navitem" href="#timeline">Timeline</a></li>
-            <li><a class="navitem" href="#contact">Contact us</a></li>
+            <li><a class="navitem" href="#footer">Contact us</a></li>
         </ul>
     </div>
 </nav>
@@ -54,8 +54,10 @@
                 way.
             </p>
             <div class="cta">
-                <a class="modal-trigger join disabled" data-trigger="join-modal" href="#join-modal">Join US</a>
-                {% if qr.active %}
+		
+                <a class="modal-trigger join {% if not is_recruitment_active.status %}disabled{% endif %}" data-trigger="join-modal" href="#join-modal">Join US</a>
+                
+		{% if qr.active %}
                 <a class="modal-trigger app" data-trigger="app-modal" href="#app-modal">Download Our App</a>
                 {% endif %}
             </div>
@@ -193,7 +195,7 @@
         <div class="tl-content">
             <h1>{{sum.0.title}}</h1>
             <p>{{sum.0.text}}</p>
-            <a class="modal-trigger info" data-trigger="our-board" href="#our-board">
+            <a class="modal-trigger info" href="/{{sum.0.id}}">
                 more info
             </a>
         </div>
@@ -212,7 +214,7 @@
         <div class="tl-content">
             <h1>{{sum.1.title}}</h1>
             <p>{{sum.1.text}}</p>
-            <a class="modal-trigger info" data-trigger="our-board" href="#our-board">
+            <a class="modal-trigger info" href="/{{sum.1.id}}">
                 more info
             </a>
         </div>
@@ -231,7 +233,7 @@
         <div class="tl-content">
             <h1>{{sum.2.title}}</h1>
             <p>{{sum.2.text}}</p>
-            <a class="modal-trigger info" data-trigger="our-board" href="#our-board">
+            <a class="modal-trigger info" href="/{{sum.3.id}}">
                 more info
             </a>
         </div>
@@ -250,7 +252,7 @@
         <div class="tl-content">
             <h1>{{sum.3.title}}</h1>
             <p>{{sum.3.text}}</p>
-            <a class="modal-trigger info" data-trigger="our-board" href="#our-board">
+            <a class="modal-trigger info" href="/{{sum.3.id}}">
                 more info
             </a>
         </div>
@@ -606,9 +608,11 @@
                         Ticket Price
                         <span class="payment">{{active_events.price}} L.E</span>
                     </p>
+			{% if active_events.extra_price %}
                     <p class="conditional-payment">
                         {{active_events.extra_price}}
                     </p>
+			{% endif %}
                     <button class="modal-trigger form-cta" data-trigger="event-form">Book Now</button>
                     <!-- class disabled for button disabled -->
                 </div>

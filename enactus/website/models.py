@@ -111,6 +111,7 @@ class summary(models.Model):
     season = models.IntegerField()
     title = models.CharField(max_length=100,null=True,blank=True)
     text = models.TextField()
+    img = models.ImageField(upload_to='summary-imgs',null=True,blank=True)
 
     def __str__(self):
         return str(self.season)
@@ -122,6 +123,29 @@ class qr_code(models.Model):
 
     def __str__(self):
         return "Click here to Enable or Disable QR button or to add new QR Image"
+
+class all_seasons_board(models.Model):
+    season = models.IntegerField()
+    summary_plan = models.ForeignKey('summary', on_delete=models.CASCADE)
+    president = models.CharField(max_length=50)
+    president_img = models.ImageField(upload_to='all-seasons-board-imgs')
+    vice_1 = models.CharField(max_length=50)
+    vice_1_img = models.ImageField(upload_to='all-seasons-board-imgs')
+    vice_2 = models.CharField(max_length=50)
+    vice_2_img = models.ImageField(upload_to='all-seasons-board-imgs')
+    multimedia = models.CharField(max_length=50)
+    multimedia_img = models.ImageField(upload_to='all-seasons-board-imgs')
+    hr = models.CharField(max_length=50)
+    hr_img = models.ImageField(upload_to='all-seasons-board-imgs')
+    er = models.CharField(max_length=50)
+    er_img = models.ImageField(upload_to='all-seasons-board-imgs')
+    project = models.CharField(max_length=50)
+    project_img = models.ImageField(upload_to='all-seasons-board-imgs')
+    presentation = models.CharField(max_length=50)
+    presentation_img = models.ImageField(upload_to='all-seasons-board-imgs')
+
+    def __str__(self):
+        return str(self.season)
 
 
 class sponsers(models.Model):

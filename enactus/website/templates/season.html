@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="IE=7" http-equiv="X-UA-Compatible">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <meta content="keywords" name="Enactus, Enactus-NCA, EnactusNCA">
+    <meta content="autor" name="Mohamed Ahmed Abdelaleem">
+    <meta content="description" name="A Website For Enactus New Cairo Academy Team">
+    <link href="asset/img/enactus-icon.png" rel="icon">
+    <title>EnactusNCA || Season {{sum.season}}</title>
+    <link href="{% static 'css/season.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<section id="project">
+    <a class="btn-main" href="/"><</a>
+    <div class="container">
+        <div class="content">
+            <h2 class="project-title">
+                {{sum.title}}
+            </h2>
+            <p class="project-desc">
+                {{sum.text}}
+            </p>
+        </div>
+        <div class="img-wrapper">
+            <img alt="Project Image" class="img-trigger img-container"
+                 data-image="{{sum.img.url}}"
+                 data-trigger="image-modal" height="350"
+                 src="{{sum.img.url}}"
+                 width="350">
+        </div>
+    </div>
+</section>
+
+<section id="board">
+    <div class="container">
+        <div class="content">
+            <h2 class="board-header">
+                Seaseon {{sum.season}}
+            </h2>
+            <!--
+            <p class="board-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur eos quo sunt.
+            </p>
+            -->
+        </div>
+        <div class="board-members">
+            <div class="card">
+                <img alt="president" class="card-img" height="350" src="{{board.president_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.president}}
+                    </h3>
+                    <p class="card-title">
+                        President
+                    </p>
+                </div>
+            </div>
+            <div class="card reverse">
+                <img alt="president" class="card-img" height="350" src="{{board.vice_1_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.vice_1}}
+                    </h3>
+                    <p class="card-title">
+                        Vice President
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img alt="president" class="card-img" height="350" src="{{board.vice_2_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.vice_1}}
+                    </h3>
+                    <p class="card-title">
+                        Vice President
+                    </p>
+                </div>
+            </div>
+            <div class="card reverse">
+                <img alt="president" class="card-img" height="350" src="{{board.multimedia_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.multimedia}}
+                    </h3>
+                    <p class="card-title">
+                        Multimedia Director
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img alt="president" class="card-img" height="350" src="{{board.er_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.er}}
+                    </h3>
+                    <p class="card-title">
+                        ER Director
+                    </p>
+                </div>
+            </div>
+            <div class="card reverse">
+                <img alt="president" class="card-img" height="350" src="{{board.hr_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.er}}
+                    </h3>
+                    <p class="card-title">
+                        HR Director
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img alt="president" class="card-img" height="350" src="{{board.project_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.project}}
+                    </h3>
+                    <p class="card-title">
+                        Project Director
+                    </p>
+                </div>
+            </div>
+            <div class="card reverse">
+                <img alt="president" class="card-img" height="350" src="{{board.presentation_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.presentation}}
+                    </h3>
+                    <p class="card-title">
+                        Presentation Director
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Start -->
+<footer id="footer">
+    <div class="container">
+        <div class="l-footer">
+            <h2 class="logo-container"><img alt="" class="logo" src="{% static 'img/enactus-logo.png' %}"></h2>
+            <p class="web-desc">
+                Enactus is an international nonprofit organization dedicated to inspiring students to improve the world through entrepreneurial action
+            </p>
+        </div>
+        <div class="mid-footer">
+            <h2 class="sponsors">Our Sponsors</h2>
+            <div class="wrapper">
+                {% for sponser in sponser %}
+                <img alt="" height="70" src="{{sponser.img.url}}" width="70">
+                {% endfor %}
+            </div>
+        </div>
+        <div class="r-footer">
+            <h2 class="social">Social</h2>
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/EnactusNCA/">
+                        <?xml version='1.0' encoding='utf-8'?>
+                        <!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) -->
+                        <svg id='Layer_1' style='enable-background:new 0 0 512 512;' version='1.1' viewBox='0 0 512 512'
+                             width="35" x='0px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg'
+                             xmlns:xlink='http://www.w3.org/1999/xlink' y='0px'><path d='M480,257.35c0-123.7-100.3-224-224-224s-224,100.3-224,224 c0,111.8,81.9,204.47,189,221.29V322.12h-56.89v-64.77H221v-49.36c0-56.13,33.45-87.16,84.61-87.16c24.51,0,50.15,4.38,50.15,4.38 v55.13h-28.26c-27.81,0-36.51,17.26-36.51,35v42.02h62.12l-9.92,64.77h-52.2v156.53C398.1,461.85,480,369.18,480,257.35L480,257.35z ' style='fill-rule:evenodd;clip-rule:evenodd;fill:#ffc21c;'/></svg>
+                    </a>
+                    <a href="instagram.com/enactusnca/">
+                        <svg fill="#ffc21c" viewBox='0 0 512 512' width='35' xmlns='http://www.w3.org/2000/svg'><title>
+                            ionicons-v5_logos</title>
+                            <path d='M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z'/>
+                            <path d='M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z'/>
+                            <path d='M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z'/>
+                        </svg>
+                    </a>
+                    <a href="https://www.behance.net/">
+                        <?xml version='1.0' encoding='utf-8'?>
+                        <!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) -->
+                        <svg id='Layer_1' style='enable-background:new 0 0 512 512;' version='1.1' viewBox='0 0 512 512'
+                             width="35" x='0px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg'
+                             xmlns:xlink='http://www.w3.org/1999/xlink' y='0px'><g><path d='M344.09,233.55c-28.87,0-32.88,28.82-32.88,28.82h61.39C372.59,262.37,372.99,233.55,344.09,233.55z ' style='fill:#ffc21c;'/><path
+                                d='M204.82,262.37H150.4v49.96h48.18c0.82,0,2.05,0.02,3.48,0c7.75-0.18,22.44-2.44,22.44-24.29 C224.51,262.1,204.82,262.37,204.82,262.37z'
+                                style='fill:#ffc21c;'/><path
+                                d='M256.01,32C132.29,32,32,132.27,32,255.99S132.29,480,256.01,480C379.71,480,480,379.71,480,255.99 C480,132.28,379.7,32,256.01,32z M303.16,169.63h77.11v23.01h-77.11V169.63z M264.18,290.37c0,57.05-59.36,55.16-59.36,55.16H150.4 h-1.59h-41.25v-186.9h41.25h1.59h54.42c29.55,0,52.87,16.32,52.87,49.76s-28.52,35.57-28.52,35.57 C266.77,243.96,264.18,290.37,264.18,290.37z M408.44,287.31h-96.85c0,34.71,32.89,32.53,32.89,32.53 c31.06,0,29.97-20.11,29.97-20.11h32.9c0,53.37-63.98,49.71-63.98,49.71c-76.74,0-71.8-71.46-71.8-71.46s-0.07-71.8,71.8-71.8 C419.02,206.19,408.44,287.31,408.44,287.31z'
+                                style='fill:#ffc21c;'/><path
+                                d='M218.04,211.29c0-19.44-13.22-19.44-13.22-19.44h-7H150.4v41.7h51.04 C210.25,233.55,218.04,230.72,218.04,211.29z'
+                                style='fill:#ffc21c;'/></g></svg>
+
+                    </a>
+                </li>
+                <li>
+                    <svg viewBox='0 0 512 512' width='35' xmlns='http://www.w3.org/2000/svg'><title>
+                        ionicons-v5-g</title>
+                        <path d='M451,374c-15.88-16-54.34-39.35-73-48.76C353.7,313,351.7,312,332.6,326.19c-12.74,9.47-21.21,17.93-36.12,14.75s-47.31-21.11-75.68-49.39-47.34-61.62-50.53-76.48,5.41-23.23,14.79-36c13.22-18,12.22-21,.92-45.3-8.81-18.9-32.84-57-48.9-72.8C119.9,44,119.9,47,108.83,51.6A160.15,160.15,0,0,0,83,65.37C67,76,58.12,84.83,51.91,98.1s-9,44.38,23.07,102.64,54.57,88.05,101.14,134.49S258.5,406.64,310.85,436c64.76,36.27,89.6,29.2,102.91,23s22.18-15,32.83-31a159.09,159.09,0,0,0,13.8-25.8C465,391.17,468,391.17,451,374Z'
+                              style='fill:none;stroke:#ffc21c;stroke-miterlimit:10;stroke-width:32px'/>
+                    </svg>
+                    <p>
+                        +20 000 000 000 00
+                    </p>
+                </li>
+                <li>
+                    <svg viewBox='0 0 512 512' width='35' xmlns='http://www.w3.org/2000/svg'><title>
+                        ionicons-v5-o</title>
+                        <rect height='320' rx='40' ry='40'
+                              style='fill:none;stroke:#ffc21c;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'
+                              width='416' x='48'
+                              y='96'/>
+                        <polyline points='112 160 256 272 400 160'
+                                  style='fill:none;stroke:#ffc21c;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                    </svg>
+                    <p>mail@enactus-nca.org</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="b-footer">
+        <p>All Rights Reserved by &copy; Enactus 2020</p>
+    </div>
+</footer>
+<!-- Footer End -->
+
+<!-- Modals -->
+<!-- Img Modal Start -->
+<div class="modal" id="image-modal">
+    <img alt="Image" class="modal-img" src="{{sum.img.url}}">
+</div>
+<!-- Img Modal End -->
+
+<script src="{% static 'js/season.js' %}"></script>
+</body>
+</html>
