@@ -64,8 +64,6 @@ def home(request):
     active_events = Event.objects.filter(status=True)
     past_events = Event.objects.filter(status=False)
 
-    #albums
-    gallery = Gallery.objects.all()
 
     is_recruitment_active = open_recruitment.objects.get(id=1)
     summ = summary.objects.all()
@@ -92,7 +90,6 @@ def home(request):
         'past_season_presentation': past_season_presentation,
 
 
-        'albums':gallery,
         'form':form,
         'r_form':r_form,
         'is_recruitment_active':is_recruitment_active,
