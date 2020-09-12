@@ -47,7 +47,7 @@ def home(request):
     this_season_vice_2 = Season_board_1.objects.get(role='vice president 2')
     this_season_multimedia = Season_board_1.objects.get(role='multimedia director')
     this_season_er = Season_board_1.objects.get(role='er director')
-    this_season_hr = Season_board_1.objects.get(role='er director')
+    this_season_hr = Season_board_1.objects.get(role='hr director')
     this_season_project = Season_board_1.objects.get(role='project director')
     this_season_presentation = Season_board_1.objects.get(role='presentation director')
     #Past Season Team
@@ -56,7 +56,7 @@ def home(request):
     past_season_vice_2 = Season_board_2.objects.get(role='vice president 2')
     past_season_multimedia = Season_board_2.objects.get(role='multimedia director')
     past_season_er = Season_board_2.objects.get(role='er director')
-    past_season_hr = Season_board_2.objects.get(role='er director')
+    past_season_hr = Season_board_2.objects.get(role='hr director')
     past_season_project = Season_board_2.objects.get(role='project director')
     past_season_presentation = Season_board_2.objects.get(role='presentation director')
 
@@ -64,8 +64,10 @@ def home(request):
     active_events = Event.objects.filter(status=True)
     past_events = Event.objects.filter(status=False)
 
+    #albums
+    gallery = Gallery.objects.all()
 
-    is_recruitment_active = open_recruitment.objects.get(id=1)
+    is_recruitment_active = open_recruitment.objects.get(id=6)
     summ = summary.objects.all()
     sum = list(summ)[-4:]
     sponser = sponsers.objects.all()
@@ -90,6 +92,7 @@ def home(request):
         'past_season_presentation': past_season_presentation,
 
 
+        'albums':gallery,
         'form':form,
         'r_form':r_form,
         'is_recruitment_active':is_recruitment_active,

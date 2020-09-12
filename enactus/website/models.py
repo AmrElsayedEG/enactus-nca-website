@@ -2,22 +2,6 @@ import django
 from django.db import models
 import datetime
 # Create your models here.
-from io import BytesIO
-from PIL import Image
-from django.core.files import File
-
-
-def compress(image):
-    imgg = Image.open(image)
-    im = imgg.convert('RGB')
-    # create a BytesIO object
-    im_io = BytesIO() 
-    # save image to BytesIO object
-    im.save(im_io, 'JPEG', quality=70) 
-    # create a django-friendly Files object
-    new_image = File(im_io, name=image.name)
-    return new_image
-
 class Season_board_1(models.Model):
     role_choices = [
         ('president','president'),
@@ -34,13 +18,6 @@ class Season_board_1(models.Model):
     role = models.CharField(max_length=50,choices=role_choices)
     season = models.IntegerField()
     img = models.ImageField(upload_to='members-imgs')
-    def save(self, *args, **kwargs):
-        # call the compress function
-        new_image = compress(self.img)
-        # set self.image to new_image
-        self.img = new_image
-        # save
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.first_name+" "+self.last_name+" - "+self.role+" - Season "+str(self.season)
@@ -61,13 +38,6 @@ class Season_board_2(models.Model):
     role = models.CharField(max_length=50,choices=role_choices)
     season = models.IntegerField()
     img = models.ImageField(upload_to='members-imgs')
-    def save(self, *args, **kwargs):
-        # call the compress function
-        new_image = compress(self.img)
-        # set self.image to new_image
-        self.img = new_image
-        # save
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.first_name+" "+self.last_name+" - "+self.role+" - Season "+str(self.season)
@@ -75,6 +45,7 @@ class Season_board_2(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length = 100)
     status = models.BooleanField(default=False)
+    banner = models.ImageField(upload_to='event-imgs')
     price = models.IntegerField()
     extra_price = models.CharField(max_length = 200,blank=True,null=True)
     text_1 = models.TextField()
@@ -102,7 +73,10 @@ class event_reservation(models.Model):
             stt = "Active"
         return "({}) ".format(stt) + str(self.created_at) + " - " + str(self.event.title) + " -- Name: "+self.first_name+" "+self.last_name
 
-
+class Gallery(models.Model):
+    season = models.IntegerField()
+    text = models.CharField(max_length=150)
+    cover = models.ImageField(upload_to='album-cover')
 class recruitment(models.Model):
     def current_year():
         return datetime.date.today().year
@@ -138,13 +112,6 @@ class summary(models.Model):
     title = models.CharField(max_length=100,null=True,blank=True)
     text = models.TextField()
     img = models.ImageField(upload_to='summary-imgs',null=True,blank=True)
-    def save(self, *args, **kwargs):
-        # call the compress function
-        new_image = compress(self.img)
-        # set self.image to new_image
-        self.img = new_image
-        # save
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.season)
@@ -176,20 +143,6 @@ class all_seasons_board(models.Model):
     project_img = models.ImageField(upload_to='all-seasons-board-imgs')
     presentation = models.CharField(max_length=50)
     presentation_img = models.ImageField(upload_to='all-seasons-board-imgs')
-    def save(self, *args, **kwargs):
-        # call the compress function
-        new_pres = compress(self.president_img)
-        new_v_1 = compress(self.vice_1_img)
-        new_v_2 = compress(self.vice_2)
-        new_hr = compress(self.hr_img)
-        new_er = compress(self.er_img)
-        new_project = compress(self.project_img)
-        new_presen = compress(self.presentation_img)
-        new_media = compress(self.multimedia_img)
-        # set self.image to new_image
-        self.img = new_image
-        # save
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.season)
@@ -198,13 +151,6 @@ class all_seasons_board(models.Model):
 class sponsers(models.Model):
     name = models.CharField(max_length=50)
     img = models.ImageField(upload_to='sponser-imgs')
-    def save(self, *args, **kwargs):
-        # call the compress function
-        new_image = compress(self.img)
-        # set self.image to new_image
-        self.img = new_image
-        # save
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
