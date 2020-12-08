@@ -1,23 +1,21 @@
-## TriTlas ![Django](https://img.shields.io/badge/Django-2.2.9-yellow.svg) ![Django](https://img.shields.io/badge/DRF-3.12.1-green.svg)
+## Enactus New Cairo Website ![Django](https://img.shields.io/badge/Django-2.2.9-yellow.svg) [![Django](https://img.shields.io/badge/Live-green.svg)](enactusnewcairo.org)
 
-![Algorithm schema](./logo/logo.png)
+
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Run](#run)
 
 ## General info
-- TriTlas is a website the shows you the best places to visit in Egypt, You can browse by city and then see the places inside the each city
-- Each place has information and images, You can see how many places in each city
-- You can make personal account to join the (Community) to post a post [image and text] and other users can comment to your post
-- Users can post their own trips in a separate page with images and information about their trip
-- Users who make ad for their trip can choose the free tier or the paid one, the paid one will let their trip appear more in the website [ community pages - City pages ]
-- There is an API that return the available places with all information about it
+- This website is a portfolio website for Enactus NC team and shows the Board of the current and previous year
+- It allows new member who want to join the team to send a request with their information through a form only available in specific periods of the year
+- It allows users to see details of the previous events and also the current event and can book to any available event
+- Ths admins can see all the form submissions [ Recruitments - Event Reservations ]
+- There is API that return all the event details as a JSON to be used in our mobile application so let users see events from there
 
 ## Technologies
 Project is created with:
 * Django: 2.2
-* Django Rest Framework: 3.12.1
 	
 ## Run
 To run this project, install it locally and make sure to install the requirements
