@@ -1,4 +1,4 @@
-## Enactus New Cairo Website ![Django](https://img.shields.io/badge/Django-2.2.9-yellow.svg) [![Django](https://img.shields.io/badge/Live-green.svg)](enactusnewcairo.org)
+## Enactus New Cairo Website ![Django](https://img.shields.io/badge/Django-2.2.9-yellow.svg) [![Django](https://img.shields.io/badge/Live-green.svg)](http://www.enactusnewcairo.org)
 
 
 ## Table of contents
