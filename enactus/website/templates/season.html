@@ -137,6 +137,19 @@
                     </p>
                 </div>
             </div>
+	{% if board.vice_3 %}
+	    <div class="card">
+                <img alt="president" class="card-img" height="350" src="{{board.vice_3_img.url}}" width="350">
+                <div class="card-content">
+                    <h3 class="card-name">
+                        {{board.vice_3}}
+                    </h3>
+                    <p class="card-title">
+                        Vice President
+                    </p>
+                </div>
+            </div>
+	{% endif %}
         </div>
     </div>
 </section>

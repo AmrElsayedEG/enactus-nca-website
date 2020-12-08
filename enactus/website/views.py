@@ -33,6 +33,9 @@ def home(request):
             res.last_name = form.cleaned_data['last_name']
             res.phone = form.cleaned_data['phone']
             res.age = form.cleaned_data['age']
+            res.academic_year = form.cleaned_data['academic_year']
+            res.national_id_number = form.cleaned_data['national_id_number']
+            res.first_time_for_him = form.cleaned_data['first_time_for_him']
             res.created_at = datetime.datetime.now()
             res.save()
             pop_msg = True
@@ -50,6 +53,10 @@ def home(request):
     this_season_hr = Season_board_1.objects.get(role='hr director')
     this_season_project = Season_board_1.objects.get(role='project director')
     this_season_presentation = Season_board_1.objects.get(role='presentation director')
+    try:
+        this_season_vice_3 = Season_board_1.objects.get(role='vice president 3')
+    except:
+        this_season_vice_3 = None
     #Past Season Team
     past_season_president = Season_board_2.objects.get(role='president')
     past_season_vice_1 = Season_board_2.objects.get(role='vice president 1')
@@ -59,6 +66,10 @@ def home(request):
     past_season_hr = Season_board_2.objects.get(role='hr director')
     past_season_project = Season_board_2.objects.get(role='project director')
     past_season_presentation = Season_board_2.objects.get(role='presentation director')
+    try:
+        past_season_vice_3 = Season_board_2.objects.get(role='vice president 3')
+    except:
+        past_season_vice_3 = None
 
     #Events
     active_events = Event.objects.filter(status=True)
@@ -81,6 +92,8 @@ def home(request):
         'this_season_hr':this_season_hr,
         'this_season_project':this_season_project,
         'this_season_presentation':this_season_presentation,
+        'past_season_vice_3':past_season_vice_3,
+        'this_season_vice_3':this_season_vice_3,
 
         'past_season_president': past_season_president,
         'past_season_vice_1': past_season_vice_1,
@@ -122,3 +135,9 @@ def summary_page(request,id):
             'sponser': sponser,
         }
         return render(request,'not-available.html',context)
+
+from django.http import JsonResponse
+def get_events_api(request):
+    events = Event.objects.all().values('title','price','status')
+    events_list = list(events)
+    return JsonResponse(events_list, safe=False)

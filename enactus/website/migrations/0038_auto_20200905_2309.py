@@ -11,11 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='recruitment',
-            name='season',
-            field=models.DateField(blank=True, default=datetime.datetime(2020, 9, 5, 23, 9, 53, 773807)),
-        ),
         migrations.AlterField(
             model_name='event_reservation',
             name='created_at',

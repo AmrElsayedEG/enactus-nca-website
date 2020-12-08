@@ -21,9 +21,4 @@ class Migration(migrations.Migration):
             name='date',
             field=models.DateField(blank=True, default=datetime.datetime(2020, 9, 5, 23, 10, 7, 107306)),
         ),
-        migrations.AlterField(
-            model_name='recruitment',
-            name='season',
-            field=models.DateField(blank=True, default=datetime.datetime(2020, 9, 5, 23, 10, 7, 105264)),
-        ),
     ]

@@ -7,6 +7,7 @@ class Season_board_1(models.Model):
         ('president','president'),
         ('vice president 1','vice president 1'),
         ('vice president 2', 'vice president 2'),
+        ('vice president 3', 'vice president 3'),
         ('multimedia director','multimedia director'),
         ('er director','ER director'),
         ('hr director','HR director'),
@@ -27,6 +28,7 @@ class Season_board_2(models.Model):
         ('president', 'president'),
         ('vice president 1', 'vice president 1'),
         ('vice president 2', 'vice president 2'),
+        ('vice president 3', 'vice president 3'),
         ('multimedia director', 'multimedia director'),
         ('er director', 'ER director'),
         ('hr director', 'HR director'),
@@ -65,6 +67,9 @@ class event_reservation(models.Model):
     last_name = models.CharField(max_length=20)
     phone = models.CharField(max_length=15)
     age = models.IntegerField()
+    academic_year = models.IntegerField(blank=True,null=True)
+    national_id_number = models.CharField(max_length=50,blank=True,null=True)
+    first_time_for_him = models.CharField(max_length=50,blank=True,null=True)
     created_at = models.DateField(default=datetime.datetime.now(),blank=True)
 
     def __str__(self):
@@ -133,6 +138,8 @@ class all_seasons_board(models.Model):
     vice_1_img = models.ImageField(upload_to='all-seasons-board-imgs')
     vice_2 = models.CharField(max_length=50)
     vice_2_img = models.ImageField(upload_to='all-seasons-board-imgs')
+    vice_3 = models.CharField(max_length=50,blank=True,null=True)
+    vice_3_img = models.ImageField(upload_to='all-seasons-board-imgs',blank=True,null=True)
     multimedia = models.CharField(max_length=50)
     multimedia_img = models.ImageField(upload_to='all-seasons-board-imgs')
     hr = models.CharField(max_length=50)

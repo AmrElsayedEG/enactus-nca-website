@@ -11,10 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='recruitment',
-            name='season',
-        ),
         migrations.AlterField(
             model_name='event_reservation',
             name='created_at',

@@ -11,10 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='recruitment',
-            name='season',
-        ),
         migrations.AddField(
             model_name='recruitment',
             name='viewed',

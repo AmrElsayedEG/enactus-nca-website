@@ -6,11 +6,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="IE=7" http-equiv="X-UA-Compatible">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <meta content="keywords" name="Enactus, Enactus-NCA, EnactusNCA">
-    <meta content="autor" name="Mohamed Ahmed Abdelaleem">
-    <meta content="description" name="A Website For Enactus New Cairo Academy Team">
+    <meta content="keywords" name="Enactus, Enactus-NCA, EnactusNCA, Enactus New Cairo">
+    <meta content="autor" name="Mohamed Ahmed Abdelaleem - Amr Elsayed Ibrahim">
+    <meta content="description" name="Enactus New Cairo Team">
     <link href="{% static 'img/enactus-main-logo.png' %}" rel="icon">
-    <title>EnactusNCA || Homepage</title>
+    <title>Enactus New Cairo || Homepage</title>
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -54,9 +54,10 @@
                 way.
             </p>
             <div class="cta">
-		
                 <a class="modal-trigger join {% if not is_recruitment_active.status %}disabled{% endif %}" data-trigger="join-modal" href="#join-modal">Join US</a>
-                
+                 <!-- Event
+<a class="modal-trigger join" data-trigger="event-modal-1" href="#event-modal-1">Lefha 2 - لفها</a>
+-->
 		{% if qr.active %}
                 <a class="modal-trigger app" data-trigger="app-modal" href="#app-modal">Download Our App</a>
                 {% endif %}
@@ -167,7 +168,7 @@
                      style="background: linear-gradient(to bottom, rgba(0,0,0,.8)40%,rgba(0,26,48,.8)60%),
                      url('{% static 'img/event-bg.jpg' %}') no-repeat; background-size: cover; background-position: center center;">
                     <h3 class="event-name">
-                        Cyclicious
+                        {{past_events.title}}
                     </h3>
                     <a class="modal-trigger event-cta" data-trigger="prev-event-modal-{{past_events.id}}" href="#prev-event-modal-{{past_events.id}}">more info</a>
                 </div>
@@ -266,7 +267,8 @@
         <div class="l-footer">
             <h2 class="logo-container"><img alt="" class="logo" src="{% static 'img/enactus-logo.png' %}"></h2>
             <p class="web-desc">
-                Enactus is an international nonprofit organization dedicated to inspiring students to improve the world through entrepreneurial action
+                Enactus is a non-profit organization that shares the purpose of enabling progress through enterpreneurial actions.
+We aspire to create a better world, Help enterpreneurs use business principles to imrprove the world.
             </p>
         </div>
         <div class="mid-footer">
@@ -281,7 +283,7 @@
             <h2 class="social">Social</h2>
             <ul>
                 <li>
-                    <a href="https://www.facebook.com/EnactusNCA/">
+                    <a href="https://www.facebook.com/EnactusNewCairo/">
                         <?xml version='1.0' encoding='utf-8'?>
                         <!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) -->
                         <svg id='Layer_1' style='enable-background:new 0 0 512 512;' version='1.1' viewBox='0 0 512 512'
@@ -318,7 +320,7 @@
                               style='fill:none;stroke:#ffc21c;stroke-miterlimit:10;stroke-width:32px'/>
                     </svg>
                     <p>
-                        +20 000 000 000 00
+                        +20 110 154 6709
                     </p>
                 </li>
                 <li>
@@ -331,13 +333,13 @@
                         <polyline points='112 160 256 272 400 160'
                                   style='fill:none;stroke:#ffc21c;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
                     </svg>
-                    <p>mail@enactus-nca.org</p>
+                    <p>contact@enactusnewcairo.org</p>
                 </li>
             </ul>
         </div>
     </div>
     <div class="b-footer">
-        <p>All Rights Reserved by &copy; Enactus 2020</p>
+        <p>All Rights Reserved by &copy; Enactus 2021</p>
     </div>
 </footer>
 <!-- Footer End -->
@@ -381,9 +383,24 @@
 
 </select>
             </div>
-            <div class="input-field">
-<label for="id_year_of_study">Year of study:</label><input type="number" name="year_of_study" required="" id="id_year_of_study">
+           
+
+
+<div class="input-field">
+<label for="id_year_of_study">Academic Year</label><select name="year_of_study" class="browser-default" id="id_year_of_study">
+  <option value="0">Junior</option>
+
+  <option value="1">1st</option>
+
+  <option value="2">2nd</option>
+
+  <option value="3">3rd</option>
+<option value="4">4th</option>
+</select>
             </div>
+
+
+
             <div class="input-field">
                 <label for="id_first_prefrence">First prefrence:</label><select name="first_prefrence" class="browser-default" id="id_first_prefrence">
   <option value="multimedia">multimedia</option>
@@ -412,7 +429,7 @@
 
 </select>
             </div>
-            <button type="submit" class="btn btn-small waves-effect" name="r_form_sub">Submit</button>
+            <button type="submit" class="btn btn-small waves-effect" name="r_form_sub" style="background-color:#557ac3;">Submit</button>
 
           </form>
     </div>
@@ -420,15 +437,15 @@
 <!-- Join Modal End -->
 <!-- app Modal start -->
 <div class="modal" id="app-modal">
-    <div class="modal-container">
+    <div class="modal-container" style="display:block;text-align:center;height:50%;">
         <div class="content">
             <h2 class="app-header">Download Our App</h2>
             <p class="app-desc">
-                Download our app from google play & app store.
+                Download our app for Android or IOS.
             </p>
         </div>
-            <img src="{{qr.qr_img.url}}" style="width:300px;height:300px"/>
-
+            <a class="mobile-app" href="">Android</a>
+	    <a class="mobile-app" href="">IOS</a>
     </div>
 </div>
 <!-- app Modal End -->
@@ -501,7 +518,19 @@
                     <p class="card-title">Presentation Director</p>
                 </div>
             </div>
+	</div>
+{% if this_season_vice_3 %}
+	<div class="row-1" style="padding:0px">
+		
+	   <div class="col-12">
+                <div class="card"><img alt="" class="card-img-media" src="{{this_season_vice_3.img.url}}">
+                    <h3 class="card-name">{{this_season_vice_3.first_name}}<br />{{this_season_vice_3.last_name}}</h3>
+                    <p class="card-title">Vice President</p>
+                </div>
+            </div>
+		
         </div>
+{% endif %}
     </div>
 </section>
 <!-- Second -->
@@ -572,7 +601,18 @@
                     <p class="card-title">Presentation Director</p>
                 </div>
             </div>
+
         </div>
+{% if past_season_vice_3 %}
+	<div class="row-1" style="padding:0px">
+	   <div class="col-12">
+                <div class="card"><img alt="" class="card-img-media" src="{{past_season_vice_3.img.url}}">
+                    <h3 class="card-name">{{past_season_vice_3.first_name}}<br />{{past_season_vice_3.last_name}}</h3>
+                    <p class="card-title">Vice President</p>
+                </div>
+            </div>
+	</div>
+{% endif %}
     </div>
 </section>
 
@@ -587,21 +627,21 @@
         <div id="event-container">
             <div class="content">
                 <h3 class="event-name">{{active_events.title}}</h3>
-                <p class="event-desc">
-                    {{active_events.text_1}}
-                </p>
+                <div class="event-desc" style="text-align: center;">
+                    {{active_events.text_1|linebreaks}}
+                </div>
             </div>
             <div class="wrapper">
                 <div class="left">
-                    <p class="event-body">
-                        {{active_events.text_2}}
-                    </p>
-                    <p class="event-ticket">
-                        {{active_events.text_3}}
-                    </p>
-                    <p class="event-contact">
-                        {{active_events.text_4}}
-                    </p>
+                    <div class="event-body" style="text-align: center;">
+                        {{active_events.text_2|linebreaks}}
+                    </div>
+                    <div class="event-ticket" style="text-align: center;">
+                        {{active_events.text_3|linebreaks}}
+                    </div>
+                    <div class="event-contact" style="text-align: center;">
+                        {{active_events.text_4|linebreaks}}
+                    </div>
                 </div>
                 <div class="right">
                     <p class="price">
@@ -667,8 +707,8 @@
 
 <!-- Form Event -->
 <section class="modal" id="event-form">
-    <div class="modal-container">
-        <div class="content">
+    <div class="modal-container" style="display: unset;">
+        <div class="content" style="margin-bottom:0px">
             <h2 class="form-header">Join Application</h2>
             <p class="form-desc">
                 Fill The Form So You Could Join Us In A new Adventure
@@ -679,19 +719,27 @@
             <label for="id_event">Event:</label>{{form.event}}
             </div>
        <div class="input-field">
-<label for="id_first_name">First name:</label><input type="text" name="first_name" value="dsa" maxlength="20" required="" id="id_first_name">
+<label for="id_first_name">First name:</label><input type="text" name="first_name" maxlength="20" required="" id="id_first_name" placeholder="First Name">
        </div>
             <div class="input-field">
-           <label for="id_last_name">Last name:</label><input type="text" name="last_name" value="dsa" maxlength="20" required="" id="id_last_name">
+           <label for="id_last_name">Last name:</label><input type="text" name="last_name" maxlength="20" required="" id="id_last_name" placeholder="Last Name">
             </div>
             <div class="input-field">
-                <label for="id_phone">Phone:</label><input type="text" name="phone" value="321" maxlength="20" required="" id="id_phone">
+                <label for="id_phone">Phone:</label><input type="text" name="phone" maxlength="20" required="" id="id_phone" placeholder="01xxxxx">
             </div>
             <div class="input-field">
-                <label for="id_age">Age:</label><input type="number" name="age" value="2" required="" id="id_age">
+                <label for="id_age">Age:</label><input type="number" name="age" required="" id="id_age" placeholder="21">
             </div>
-
-            <button type="submit" class="btn btn-small waves-effect">Submit</button>
+<div class="input-field">
+                <label for="id_academic_year">Academic Year:</label><input type="number" name="academic_year" required="" id="id_academic_year" placeholder="1 - 2 - 3 - 4">
+            </div>
+<div class="input-field">
+<label for="id_national_id_number">National ID Number:</label><input type="text" name="national_id_number" maxlength="50" required="" id="id_national_id_number" placeholder="121....">
+       </div>
+<div class="input-field">
+<label for="id_first_time_for_him">First time to attend our events?:</label><input type="text" name="first_time_for_him" maxlength="50" required="" id="id_first_time_for_him" placeholder="Yes - No">
+       </div>
+            <button type="submit" class="btn btn-small waves-effect" style="background-color: #557ac3;">Submit</button>
 
 
 
@@ -710,7 +758,6 @@
         }
         window.onload = codeAddress
         </script>
-
 {% endif %}
 
 <script src="{% static 'js/main.js' %}"></script>
@@ -726,5 +773,8 @@ const EventModalPrev_{{past_events.id}} = document.getElementById("prev-event-mo
 const eventCTA=document.querySelector(".form-cta");eventCTA.addEventListener("click",function(){eventModal.classList.remove("open")});
 {% endif %}
 </script>
+
+
+
 </body>
 </html>

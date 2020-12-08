@@ -10,6 +10,10 @@ class event_reservationForm(forms.Form):
     last_name = forms.CharField(max_length=20)
     phone = forms.CharField(max_length=20)
     age = forms.IntegerField()
+    academic_year = forms.IntegerField()
+    national_id_number = forms.CharField(max_length=50)
+    first_time_for_him = forms.CharField(max_length=50)
+    
 class rec_form(forms.Form):
     colleges_list = [('Computer Science','Computer Science'),
                      ('Engineering','Engineering'),
